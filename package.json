@@ -1,34 +1,22 @@
 {
-  "name": "cppzst",
-  "version": "2.0.7",
-  "description": "Zstd wrapper for Nodejs 14 and above",
-  "main": "index.mjs",
-  "scripts": {
-    "test": "mocha -t 5000",
-    "build:dev": "node-gyp -j 16 build --debug",
-    "build": "node-gyp -j 16 build",
-    "rebuild:dev": "node-gyp -j 16 rebuild --debug",
-    "rebuild": "node-gyp -j 16 rebuild",
-    "clean": "node-gyp clean"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rmw-lib/cppzst.git"
-  },
+  "name": "z-std",
+  "version": "1.0.0",
+  "description": "Zstandard wrapper for Node 14 and above",
+  "main": "index.js",
+  "repository": "github:scheibo/z-std",
+  "license": "MIT",
   "keywords": [
+    "zstandard",
     "zstd",
     "compression",
     "decompression"
   ],
   "author": "zwb-ict",
   "contributors": [
-    {
-      "name": "gcxfd",
-      "email": "i@rmw.link",
-      "url": "https://github.com/gcxfd"
-    }
+    "Tyler Stiene <tystiene@gmail.com> (https://github.com/Stieneee)",
+    "gcxfd <i@rmw.link> (https://github.com/gcxfd)",
+    "Kirk Scheibelhut <kjs@scheibo.com> (https://github.com/scheibo)"
   ],
-  "license": "AGPL-3.0-or-later",
   "dependencies": {
     "bindings": "^1.5.0",
     "nan": "^2.14.2",
@@ -38,5 +26,13 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^8.2.0"
+  },
+  "scripts": {
+    "test": "mocha -t 5000",
+    "build:dev": "node-gyp -j 16 build --debug",
+    "build": "node-gyp -j 16 build",
+    "rebuild:dev": "node-gyp -j 16 rebuild --debug",
+    "rebuild": "node-gyp -j 16 rebuild",
+    "clean": "node-gyp clean"
   }
 }

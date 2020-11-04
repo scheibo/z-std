@@ -1,60 +1,59 @@
-cppzst [![version](https://img.shields.io/npm/v/cppzst.svg)](https://www.npmjs.com/package/cppzst) [![ZSTD/v1.3.4](https://img.shields.io/badge/ZSTD-v1.3.4-green.svg)](https://github.com/facebook/zstd/releases/tag/v1.3.4)
-=====
+# cppzst
 
-[![Build Status][1]][2]
+![Test Status](https://github.com/scheibo/z-std/workflows/Tests/badge.svg)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+[![npm version](https://img.shields.io/npm/v/scheibo/z-std.svg)](https://www.npmjs.com/package/scheibo/z-std)
 
-[1]: https://travis-ci.org/zwb-ict/cppzst.svg?branch=master
-[2]: https://travis-ci.org/zwb-ict/cppzst
-
-Zstd wrapper for Nodejs
+Zstandard wrapper for Node with Typescript bindings.
 
 ## Installation
 
 ```bash
-$ npm install cppzst --save
+$ npm install z-std --save
 ```
 
 ## Usage
 
 ### Async
 
-#### compress(buffer[, zstdCompressParams], callback)
+#### `compress(buffer[, zstdCompressParams], callback)`
 
-```javascript
+```js
 import {compress} from 'cppzst';
 
 await compress(input);
 
 ```
-#### decompress(buffer[, zstdDecompressParams], callback)
 
-```javascript
+#### `decompress(buffer[, zstdDecompressParams], callback)`
+
+```js
 import {decompress} from 'cppzst';
 
-await decompress(input)
+await decompress(input);
 ```
 
 ### Sync
 
-#### compressSync(buffer[, zstdCompressParams])
+#### `compressSync(buffer[, zstdCompressParams])`
 
-```javascript
+```js
 const compressSync = require('cppzst').compressSync;
 
 try {
-  var output = compressSync(input);
+  const output = compressSync(input);
 } catch(err) {
   // ...
 }
 ```
 
-#### decompressSync(buffer[, zstdCompressParams])
+#### `decompressSync(buffer[, zstdCompressParams])`
 
-```javascript
+```js
 const decompressSync = require('cppzst').decompressSync;
 
 try {
-  var output = decompressSync(input);
+  const output = decompressSync(input);
 } catch(err) {
   // ...
 }
@@ -62,9 +61,9 @@ try {
 
 ### Stream
 
-#### compressStream([zstdCompressParams])
+#### `compressStream([zstdCompressParams])`
 
-```javascript
+```js
 const compressStream = require('cppzst').compressStream;
 const fs = require('fs');
 
@@ -73,9 +72,9 @@ fs.createReadStream('path/to/input')
   .pipe(fs.createWriteStream('path/to/output'));
 ```
 
-#### decompressStream([zstdCompressParams])
+#### `decompressStream([zstdCompressParams])`
 
-```javascript
+```js
 const decompressStream = require('cppzst').decompressStream;
 const fs = require('fs');
 
@@ -86,9 +85,10 @@ fs.createReadStream('path/to/input')
 
 ### ZSTD Params
 
-The `compress`, `compressSync` and `compressStream` methods may accept an optional `zstdCompressParams` object to define compress level and/or dict.
+The `compress`, `compressSync` and `compressStream` methods may accept an optional
+`zstdCompressParams` object to define compress level and/or dict.
 
-```javascript
+```js
 const zstdCompressParams = {
   level: 5, // default 1
   dict: new Buffer('hello zstd'), // if dict null, left level only.
@@ -96,12 +96,13 @@ const zstdCompressParams = {
 };
 ```
 
-The `decompress`, `decompressSync` and `decompressStream` methods may accept an optional `zstdDecompressParams` object to define dict.
+The `decompress`, `decompressSync` and `decompressStream` methods may accept an optional
+`zstdDecompressParams` object to define dict.
 
-```javascript
+```js
 const zdtdDecompressParams = {
   dict: new Buffer('hello zstd'),
-  dictSize: dict.length
+  dictSize: dict.length,
 };
 ```
 
@@ -112,4 +113,5 @@ $ npm test
 ```
 
 ## License
-MIT
+
+This package is distributed under the terms of the [MIT License](LICENSE).

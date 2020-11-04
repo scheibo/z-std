@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+'use strict';
+
+const zstd = require('.');
+
+for (let i = 0; i < 1000000; i++) {
+  const s = '0123456789';
+  const c = zstd.compressSync(Buffer.from(s));
+  const d = zstd.decompressSync(c);
+
+  if (i % 100 === 0){
+    const res = process.memoryUsage();
+    console.log('mem:', res.external.toLocaleString(), res.heapTotal.toLocaleString(), res.heapUsed.toLocaleString(), res.rss.toLocaleString());
+  }
+}
